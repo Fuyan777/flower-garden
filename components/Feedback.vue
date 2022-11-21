@@ -62,7 +62,7 @@ export default {
         { cmd: 'setPlayer5', title: "player-5", color: "オレンジ" },
         { cmd: 'setPlayer6', title: "player-6", color: "紫" },
         { cmd: 'setPlayer7', title: "player-7", color: "黄" },
-        { cmd: 'setPlayer8', title: "player-8", color: "緑" },
+        { cmd: 'setPlayer8', title: "player-8", color: "アヤメ" },
       ],
       dbConnectionStatusText: "未選択",
       trackingStatusText: "未選択",
@@ -78,7 +78,7 @@ export default {
         blueFlower: require(`@/assets/flower-blue.png`),
         whiteFlower: require(`@/assets/flower-white.png`),
         pinkFlower: require(`@/assets/flower-pink.png`),
-        greenFlower: require(`@/assets/flower-green.png`),
+        greenFlower: require(`@/assets/flower-ayame.png`),
         orangeFlower: require(`@/assets/flower-orange.png`),
         yellowFlower: require(`@/assets/flower-yellow.png`),
         purpleFlower: require(`@/assets/flower-purple.png`),
@@ -87,7 +87,7 @@ export default {
         blueBud: require(`@/assets/bud-blue.png`),
         whiteBud: require(`@/assets/bud-white.png`),
         pinkBud: require(`@/assets/bud-pink.png`),
-        greenBud: require(`@/assets/bud-green.png`),
+        greenBud: require(`@/assets/bud-ayame.png`),
         orangeBud: require(`@/assets/bud-orange.png`),
         yellowBud: require(`@/assets/bud-yellow.png`),
         purpleBud: require(`@/assets/bud-purple.png`),
@@ -97,7 +97,7 @@ export default {
       beforeBlueSpeechMotivation: 0,
       beforeWhiteSpeechMotivation: 0,
       beforePinkSpeechMotivation: 0,
-      beforeGreenSpeechMotivation: 0,
+      beforeAyameSpeechMotivation: 0,
       beforeOrangeSpeechMotivation: 0,
       beforeYellowSpeechMotivation: 0,
       beforePurpleSpeechMotivation: 0,
@@ -283,8 +283,8 @@ export default {
                 }
                 break
               case 'player-8':
-                if (this.beforeGreenSpeechMotivation < change.doc.data().motivation) {
-                  this.beforeGreenSpeechMotivation = change.doc.data().motivation;
+                if (this.beforeAyameSpeechMotivation < change.doc.data().motivation) {
+                  this.beforeAyameSpeechMotivation = change.doc.data().motivation;
                   this.setBudTypeWithDB(change.doc.id);
                 } else {
                   this.setFlowerTypeWithDB(change.doc.id);
