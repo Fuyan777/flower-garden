@@ -141,6 +141,7 @@ export default {
     this.firestoreDB = getFirestore(app);
     console.log("firebase: "+this.firestoreDB);
   },
+
   watch: {
     nodCount: function() {
       if (this.isDebug) return; 
@@ -506,18 +507,6 @@ export default {
       });
     },
 
-    resetCountPlayer: async function() {
-      this.playerSettingButtons.forEach(async (index) => {
-        const playersRef = doc(this.firestoreDB, "players", this.playerSettingButtons[index].title);
-        await updateDoc(playersRef, {
-          motivation: 0,
-          nod: 0,
-          speech: 0
-        });
-        console.log("Reset player: ", this.playerSettingButtons[index].title);
-      });
-    },
-
     startDetectionSpeech: function() {
       console.log("start detection");
       this.setVAD((val) => {
@@ -655,3 +644,30 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+
+button {
+  font-size: 1.3rem;
+  font-weight: bold;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 1.3rem;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  letter-spacing: 0.1em;
+  border-radius: 0.5rem;
+  color: rgb(58, 58, 58);
+  background: #d6d6d6;
+  border: 1px solid #ccc;
+  margin: 10px;
+}
+
+button:hover {
+  color: rgb(58, 58, 58);
+  background: #8d8d8d;
+}
+
+</style>
