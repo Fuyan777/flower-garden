@@ -1,6 +1,6 @@
 <template>
   <div class="garden-block">
-    <h2>■ 花のメタファによるフィードバック</h2>
+    <h2>■ グラフによるフィードバック</h2>
       <div class="flower-block" :style="{position: `relative`}">
         <img id="bed" :src="require(`@/assets/flower-bed.png`)" width="535">
         <!-- 花の表示 -->
