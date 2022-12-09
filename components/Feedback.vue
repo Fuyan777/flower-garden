@@ -13,14 +13,14 @@
             :style="{position: 'absolute', top: gardenPadding + item.y + 'px', left: gardenPadding + item.x + 'px' }"
           >
         </div>
-      </div>
-      <div class="setting-block">
-        <div class="player-status">
           <div class="set-support-button" v-if="isStartedFeedback">
             <h3>補助ボタン</h3>
             <button v-on:click="listeningButton">聞いています</button>
             <button v-on:click="motivationButton">発言したい</button>
           </div>
+      </div>
+      <div class="setting-block">
+        <div class="player-status">
           <h3>1. プレイヤー設定：{{ playerStatusText }}</h3>
           <button
             v-for="btn in playerSettingButtons" 
@@ -226,7 +226,9 @@ export default {
             console.log("Modified: ", change.doc.data());
             // DBのカウント数に合わせて花の表示を行う（ランダム表示）
             this.setFlowerCountWithDB(change.doc.id, change.doc.data());
-            this.countStatus = change.doc.data(); 
+            if (change.doc.id == this.playerStatusText) {
+              this.countStatus = change.doc.data(); 
+            }
           }
 
           if (change.type === "modified") {
@@ -653,8 +655,11 @@ export default {
 
     listeningButton: function () {
       console.log("****** nod count ******");
+      console.log("count status",this.countStatus.nod);
       this.nodCount += 1;
+      console.log("count status",this.countStatus.nod);
       this.countStatus.nod += 1;
+      console.log("count status",this.countStatus.nod);
     },
 
     motivationButton: function () {
@@ -689,6 +694,10 @@ button {
 button:hover {
   color: rgb(58, 58, 58);
   background: #8d8d8d;
+}
+
+.flower-block {
+  padding-bottom: 400px;
 }
 
 </style>
