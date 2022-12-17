@@ -15,7 +15,6 @@
         </div>
           <div class="set-support-button" v-if="isStartedFeedback">
             <h3>補助ボタン</h3>
-            <!-- <button v-on:click="listeningButton">聞いています</button> -->
             <button v-on:click="motivationButton">発言したい</button>
           </div>
       </div>
@@ -410,6 +409,10 @@ export default {
 
       this.faceIntervalTimer = setInterval(async() => {
         const faces = await this.detector.estimateFaces(this.video);
+        if (faces[0] == undefined) {
+          console.log("Not Recognition");
+          return;
+        }
         // MARK: - Nod Recognition
 
         // 顔の角度計算
